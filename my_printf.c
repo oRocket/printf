@@ -30,7 +30,7 @@ int _printf(const char *format, ...)
 			a += 1;
 			count += (count_s - 1);
 		}
-		else
+		else if (format[a + 1] == '%')
 		{
 			_putc('%');
 		}
