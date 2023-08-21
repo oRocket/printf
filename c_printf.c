@@ -1,7 +1,7 @@
 #include "main.h"
 #include <stdio.h>
 /**
- * _printf - print to std format
+ * printf_int - print to std format
  * @f: format
  * Return: number of bytes to be printed
  */
@@ -28,25 +28,6 @@ int printf_int(const char *f, ...)
 		{
 			num = va_arg(argumts, unsigned int);
 			printf("Unsigned:[%u]\n", num); /* Print the unsigned integer */
-			a += 1;
-		}
-		else if (f[a + 1] == 'o')
-		{
-			num = va_arg(argumts, unsigned int);
-			printf("Unsigned octal:[%o]\n", num); /* Print the octal number */
-			a += 1;
-		}
-		else if (f[a + 1] == 'x')
-		{
-			num = va_arg(argumts, unsigned int);
-			printf("Unsigned hexadecimal:[%x, %X]\n", num, num);
-			a += 1;
-		}
-		else if (f[a + 1] == 'p')
-		{
-			void *ptr = va_arg(argumts, void *);
-
-			printf("Address:[%p]\n", ptr); /* Print the memory address */
 			a += 1;
 		}
 		else if (f[a + 1] == '%')
