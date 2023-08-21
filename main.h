@@ -31,6 +31,7 @@ typedef struct
 	int i;
 } flags_t;
 
+int _benedict(const char *c);
 int print_integer(va_list args);
 int _printf(const char *format, ...);
 int _putc(char c);
