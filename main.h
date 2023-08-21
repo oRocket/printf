@@ -7,7 +7,8 @@
 #include <unistd.h>
 #include <limits.h>
 
-
+int count_digits(int num);
+int my_printf(const char *format, ...);
 int _benedict(const char *c);
 int print_integer(va_list args);
 int _printf(const char *format, ...);
