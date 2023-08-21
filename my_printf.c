@@ -10,7 +10,9 @@ int _printf(const char *format, ...)
 	va_list argumts;
 
 	if (!format || (format[0] == '%' && format[1] == '\0'))
+	{
 		return (-1);
+	}
 	va_start(argumts, format);
 
 	for (a = 0; format[a] != '\0'; a++)
@@ -30,7 +32,7 @@ int _printf(const char *format, ...)
 			a += 1;
 			count += (count_s - 1);
 		}
-		else if (format[a + 1] == '%')
+		else
 		{
 			_putc('%');
 		}
