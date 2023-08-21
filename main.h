@@ -5,8 +5,13 @@
 #include <stdlib.h>
 #include <stdarg.h>
 #include <unistd.h>
+#include <string.h>
 #include <limits.h>
 
+#define BUFFER_SIZE 1024
+
+int _print(const char *format, ...);
+void print_ints(int count, ...);
 int _albert(const char *format, ...);
 int count_digits(int num);
 int _benedict(const char *c);
