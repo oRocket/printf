@@ -7,7 +7,7 @@
 #include <unistd.h>
 #include <limits.h>
 
-int _albert(const char *format, ...); 
+int _albert(const char *format, ...);
 int count_digits(int num);
 int _benedict(const char *c);
 int print_integer(va_list args);

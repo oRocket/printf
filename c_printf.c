@@ -45,6 +45,7 @@ int printf_int(const char *f, ...)
 		else if (f[a + 1] == 'p')
 		{
 			void *ptr = va_arg(argumts, void *);
+
 			printf("Address:[%p]\n", ptr); /* Print the memory address */
 			a += 1;
 		}
