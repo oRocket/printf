@@ -1,6 +1,6 @@
 #include "main.h"
 /**
- * _puts - Prints a string to stdout followed by a newline
+ * _benedict - Prints a string to stdout followed by a newline
  * @c: The string to be printed
  *
  * Return: Number of characters printed (excluding the null byte)

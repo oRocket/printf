@@ -4,7 +4,7 @@
  * @format: format
  * Return: number of bytes to be printed
  */
-int _printf(const char *format,... )
+int _printf(const char *format, ...)
 {
 	unsigned int a, count = 0, count_s;
 	va_list argumts;
@@ -33,7 +33,7 @@ int _printf(const char *format,... )
 		else
 		{
 			_putc('%');
-		} 
+		}
 		count++;
 	}
 	va_end(argumts);
