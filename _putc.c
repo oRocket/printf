@@ -1,11 +1,11 @@
 #include "main.h"
 
 /**
- * _putc - print a char
+ * _putc - print a character
  * @c: character to be inputed
  * Return: 1
  */
-int _putc(char c)
+int _putc(int c)
 {
-	return (write(1, &c, 1));
+	return (write(STDOUT_FILENO, &c, 1));
 }
