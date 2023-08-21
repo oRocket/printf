@@ -12,6 +12,6 @@ int count_digits(int num);
 int _benedict(const char *c);
 int print_integer(va_list args);
 int _printf(const char *format, ...);
-int _putc(int c);
+int _putc(char c);
 
 #endif
