@@ -1,12 +1,11 @@
 #include "main.h"
-#include <stdio.h>
 /**
- * my_printf - Custom printf implementation.
+ * _albert - Custom printf implementation.
  * @format: The format string.
  * @...: Variable number of arguments based on format.
  * Return: The number of characters written.
  */
-int my_printf(const char *format, ...)
+int _albert(const char *format, ...)
 {
 	int w_chars = 0, num, num_digits; /* written character */
 	const char *p = format;
