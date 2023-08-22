@@ -21,20 +21,20 @@ int printf_more_int(const char *f, ...)
 		if (f[a + 1] == 'o')
 		{
 			num = va_arg(argumts, unsigned int);
-			printf("Unsigned octal:[%o]\n", num); /* Print the octal number */
+			_printf("Unsigned octal:[%o]\n", num); /* Print the octal number */
 			a += 1;
 		}
 		else if (f[a + 1] == 'x')
 		{
 			num = va_arg(argumts, unsigned int);
-			printf("Unsigned hexadecimal:[%x, %X]\n", num, num);
+			_printf("Unsigned hexadecimal:[%x, %X]\n", num, num);
 			a += 1;
 		}
 		else if (f[a + 1] == 'p')
 		{
 			void *ptr = va_arg(argumts, void *);
 
-			printf("Address:[%p]\n", ptr); /* Print the memory address */
+			_printf("Address:[%p]\n", ptr); /* Print the memory address */
 			a += 1;
 		}
 		count++;

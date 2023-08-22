@@ -1,11 +1,4 @@
-#include <stdarg.h>
-#include <unistd.h>
 #include "main.h"
-
-int _putchar(char c)
-{
-	return (_write(1, &c, 1)); /* 1 is the file descriptor for stdout */
-}
 
 int _printf(const char *format, ...)
 {
@@ -23,27 +16,28 @@ int _printf(const char *format, ...)
 			switch (*ptr)
 			{
 				case 'd':
-					break;
-				case 'i':
+					count += printf("%d", va_arg(args, int));
 					break;
 				case 'f':
+					count += printf("%f", va_arg(args, double));
 					break;
 				case 'c':
+					count += printf("%c", va_arg(args, int));
 					break;
 				case 's':
+					count += printf("%s", va_arg(args, char *));
 					break;
 				default:
-					_putchar(*ptr);
+					_putc(*ptr); /* Print any unrecognized specifier as is */
 					++count;
 			}
 		}
 		else
 		{
-			_putchar(*ptr);
+			_putc(*ptr);
 			++count;
 		}
 	}
 	va_end(args);
 	return (count);
 }
-

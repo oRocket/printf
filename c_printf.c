@@ -21,13 +21,13 @@ int printf_int(const char *f, ...)
 		if (f[a + 1] == 'd')
 		{
 			num = va_arg(argumts, int);
-			printf("Signed:[%d]\n", num);
+			_printf("Signed:[%d]\n", num);
 			a += 1;
 		}
 		else if (f[a + 1] == 'u')
 		{
 			num = va_arg(argumts, unsigned int);
-			printf("Unsigned:[%u]\n", num); /* Print the unsigned integer */
+			_printf("Unsigned:[%u]\n", num); /* Print the unsigned integer */
 			a += 1;
 		}
 		else if (f[a + 1] == '%')

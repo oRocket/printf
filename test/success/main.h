@@ -20,6 +20,7 @@ typedef struct f_spec
 	int (*f)();
 } sp_char;
 
+int _write(int fd, const void *buf, size_t count);
 int _printf(const char *format, ...);
 int _putc(char c);
 int _benedict(const char *c);
