@@ -10,6 +10,16 @@
 
 #define BUFFER_SIZE 1024
 
+int print_short_decimal(va_list args, int *count);
+int print_long_decimal(va_list args, int *count);
+int print_short_unsint(va_list args, int *count);
+int print_long_unsint(va_list args, int *count);
+int print_short_oct(va_list args, int *count);
+int print_long_oct(va_list args, int *count);
+int print_short_hex(va_list args, int *count);
+int print_long_hex(va_list args, int *count);
+int print_short_HEX(va_list args, int *count);
+int print_long_HEX(va_list args, int *count);
 int _string(char *str, int length);
 int print_address(va_list args, int *count);
 int print_hexad(unsigned long int n, int *count);
