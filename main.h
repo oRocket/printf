@@ -10,18 +10,20 @@
 
 #define BUFFER_SIZE 1024
 
+int _string(char *str, int length);
+int print_address(va_list args, int *count);
+int print_hexad(unsigned long int n, int *count);
+int print_unsint(va_list args, int *count);
+int print_HEX(va_list args, int *count);
+int print_hex(va_list args, int *count);
+int print_oct(va_list args, int *count);
+int print_decimal(va_list args, int *count);
+int print_string(va_list args, int *count);
+int print_char(va_list args, int *count);
 int power(int base, int exponent);
-void print_string(char *str);
-void print_formatted_string(char *format, ...);
-int _print(const char *format, ...);
-void print_ints(int count, ...);
-int _albert(const char *format, ...);
-int count_digits(int num);
-int _benedict(const char *c);
-int print_integer(va_list args);
+int _print_int(va_list argumts);
 int _printf(const char *format, ...);
-int printf_more_int(const char *f, ...);
-int printf_int(const char *f, ...);
+int _benedict(const char *c);
 int _putc(char c);
 
-#endif
+#endif /* MAIN_H */

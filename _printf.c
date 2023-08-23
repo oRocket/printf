@@ -1,11 +1,16 @@
-#include "main.h"                                          
-
+#include "main.h"
+/**
+ * _printf - Custom printf function
+ * @format: The format string
+ * @...: Additional arguments to format
+ * Return: Number of characters printed
+ */
 int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
 
-	va_start(args, format);                            
+	va_start(args, format);
 	while (*format != '\0')
 	{
 		if (*format != '%')
@@ -19,7 +24,8 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					print_char(args, &count);                                                                                             break;
+					print_char(args, &count);
+					break;
 				case 's':
 					print_string(args, &count);
 					break;
@@ -47,7 +53,8 @@ int _printf(const char *format, ...)
 					print_HEX(args, &count);
 					break;
 				default:
-					_putc('%');                                                _putc(*format);
+					_putc('%');
+					_putc(*format);
 					count += 2;
 			}
 		}
