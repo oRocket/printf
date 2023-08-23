@@ -1,22 +1,11 @@
-#include "main.h"
+#include "main.h"                                          
 
 int _printf(const char *format, ...)
 {
-	int digits = 0;
-	int i;
-	int num;
-	int temp;
-	int hex_digits;
-	int length;
-	unsigned int hex_num;
-	unsigned int octal_num;
-	unsigned int unsigned_num;
-
 	va_list args;
 	int count = 0;
 
-	va_start(args, format);
-
+	va_start(args, format);                            
 	while (*format != '\0')
 	{
 		if (*format != '%')
@@ -30,126 +19,35 @@ int _printf(const char *format, ...)
 			switch (*format)
 			{
 				case 'c':
-					_putc(va_arg(args, int));
-					count++;
-					break;
+					print_char(args, &count);                                                                                             break;
 				case 's':
-					{
-						char *str = va_arg(args, char *);
-						while (*str != '\0')
-						{
-							_putc(*str);
-							str++;
-							count++;
-						}
-						break;
-					}
+					print_string(args, &count);
+					break;
 				case '%':
 					_putc('%');
 					count++;
 					break;
 				case 'd':
 				case 'i':
-					{
-						num = va_arg(args, int);
-						if (num < 0)
-						{
-							_putc('-');
-							count++;
-							num = -num;
-						}
-						temp = num;
-						do
-						{
-							temp /= 10;
-							digits++;
-						}
-						while (temp > 0);
-						while (digits > 0)
-						{
-							_putc('0' + (num / power(10, digits - 1)) % 10);
-							count++;
-							digits--;
-						}
-						break;
-					}
-				case 'r':
-					{
-						char *str = va_arg(args, char *);
-						length = 0;
-						while (str[length] != '\0')
-							length++;
-
-						while (length > 0)
-						{
-							length--;
-							_putc(str[length]);
-							count++;
-						}
-						break;
-					}
+					print_decimal(args, &count);
+					break;
 				case 'u':
-					{
-						unsigned_num = va_arg(args, unsigned int);
-						temp = unsigned_num;
-						do
-						{
-							temp /= 10;
-							digits++;
-						}
-						while (temp > 0);
-						
-						while (digits > 0)
-						{
-							_putc('0' + (unsigned_num / power(10, digits - 1)) % 10);
-							count++;
-							digits--;
-						}
-						break;
-					}
+					print_unsint(args, &count);
+					break;
+				case 'p':
+					print_address(args, &count);
+					break;
 				case 'o':
-					{
-						octal_num = va_arg(args, unsigned int);
-						temp = octal_num;
-						do
-						{
-							temp /= 8;
-							digits++;
-						}
-						while (temp > 0);
-
-						while (digits > 0)
-						{
-							_putc('0' + (octal_num / power(8, digits - 1)) % 8);
-							count++;
-							digits--;
-						}
-						break;
-					}
+					print_oct(args, &count);
+					break;
 				case 'x':
-					{
-						hex_num = va_arg(args, unsigned int);
-						hex_digits = 1; /* At least one digit */
-						
-						while (hex_num >= 16)
-						{
-							hex_num /= 16;
-							hex_digits++;
-						}
-						_putc('0');
-						_putc('x');
-						count += 2;
-						
-						for (i = hex_digits - 1; i >= 0; i--)
-						{
-							_putc("0123456789abcdef"[(va_arg(args, unsigned int) >> (4 * i)) & 0xf]);
-							count++;
-						}
-						break;
-					}
+					print_hex(args, &count);
+					break;
+				case 'X':
+					print_HEX(args, &count);
+					break;
 				default:
-					_putc('%');
-					_putc(*format);
+					_putc('%');                                                _putc(*format);
 					count += 2;
 			}
 		}
