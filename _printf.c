@@ -9,6 +9,7 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int count = 0;
+	int flags = 0;
 	int length_modifier = 0; /* 0: None, 1: 'h', 2: 'l' */
 
 	va_start(args, format);
@@ -50,41 +51,41 @@ int _printf(const char *format, ...)
 				case 'd':
 				case 'i':
 					if (length_modifier == 1)
-						print_short_decimal(args, &count);
+						print_short_decimal(args, &count, flags);
 					else if (length_modifier == 2)
-						print_long_decimal(args, &count);
+						print_long_decimal(args, &count, flags);
 					else
 						print_decimal(args, &count);
 					break;
 				case 'u':
 					if (length_modifier == 1)
-						print_short_unsint(args, &count);
+						print_short_unsint(args, &count, flags);
 					else if (length_modifier == 2)
-						print_long_unsint(args, &count);
+						print_long_unsint(args, &count, flags);
 					else
 						print_unsint(args, &count);
 					break;
 				case 'o':
 					if (length_modifier == 1)
-						print_short_oct(args, &count);
+						print_short_oct(args, &count, flags);
 					else if (length_modifier == 2)
-						print_long_oct(args, &count);
+						print_long_oct(args, &count, flags);
 					else
 						print_oct(args, &count);
 					break;
 				case 'x':
 					if (length_modifier == 1)
-						print_short_hex(args, &count);
+						print_short_hex(args, &count, flags);
 					else if (length_modifier == 2)
-						print_long_hex(args, &count);
+						print_long_hex(args, &count, flags);
 					else
 						print_hex(args, &count);
 					break;
 				case 'X':
 					if (length_modifier == 1)
-						print_short_HEX(args, &count);
+						print_short_HEX(args, &count, flags);
 					else if (length_modifier == 2)
-						print_long_HEX(args, &count);
+						print_long_HEX(args, &count, flags);
 					else
 						print_HEX(args, &count);
 					break;

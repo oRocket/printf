@@ -1,35 +1,42 @@
 #include "main.h"
 /**
- * print_short_unsint - Prints unsigned integer representation of a short int
+ * print_short_unsint - Prints unsigned short int in decimal representation
  * @args: Points to the list of arguments
  * @count: Pointer to counter
- * Return: Always (0) Success
+ * @flags: Flags indicating formatting options (#)
+ * Return: 0
  */
-int print_short_unsint(va_list args, int *count)
+int print_short_unsint(va_list args, int *count, int flags)
 {
 	short int num = (short int)va_arg(args, int);
 	char buffer[32];
-	int buffer_index = 0;
-	int c = 0;
+	int buffer_index = 0, c = 0;
 
 	if (num == 0)
 	{
-		_putc('0');
-		(*count)++;
+		if (flags & FLAG_HASH)
+		{
+			_putc('0');
+			(*count)++;
+		}
 		return (1);
 	}
 
-	/* Convert the number to its string representation */
+	if (flags & FLAG_HASH)
+	{
+		_putc('0');
+		_putc('x');
+		(*count) += 2;
+	}
+
 	while (num > 0)
 	{
 		buffer[buffer_index] = (num % 10) + '0';
 		num /= 10;
 		buffer_index++;
 	}
-
 	buffer_index--;
 
-	/* Print the string representation in reverse order */
 	while (buffer_index >= 0)
 	{
 		_putc(buffer[buffer_index]);
@@ -37,6 +44,5 @@ int print_short_unsint(va_list args, int *count)
 		(*count)++;
 		c++;
 	}
-
 	return (0);
 }

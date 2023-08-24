@@ -1,11 +1,12 @@
 #include "main.h"
 /**
- * print_short_oct - Prints octal representation of a short int
+ * print_short_oct - Prints short int in octal representation
  * @args: Points to the list of arguments
  * @count: Pointer to counter
+ * @flags: Flags indicating formatting options (#)
  * Return: Always (0) success
  */
-int print_short_oct(va_list args, int *count)
+int print_short_oct(va_list args, int *count, int flags)
 {
 	short int num = (short int)va_arg(args, int);
 	char buffer[32];
@@ -14,22 +15,28 @@ int print_short_oct(va_list args, int *count)
 
 	if (num == 0)
 	{
-		_putc('0');
-		(*count)++;
+		if (flags & FLAG_HASH)
+		{
+			_putc('0');
+			(*count)++;
+		}
 		return (1);
 	}
 
-	/* Convert the number to octal representation */
+	if (flags & FLAG_HASH)
+	{
+		_putc('0');
+		(*count)++;
+	}
+
 	while (num > 0)
 	{
 		buffer[buffer_index] = (num % 8) + '0';
 		num /= 8;
 		buffer_index++;
 	}
-
 	buffer_index--;
 
-	/* Print the octal representation in reverse order */
 	while (buffer_index >= 0)
 	{
 		_putc(buffer[buffer_index]);
@@ -37,6 +44,5 @@ int print_short_oct(va_list args, int *count)
 		(*count)++;
 		c++;
 	}
-
 	return (0);
 }
