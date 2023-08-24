@@ -8,21 +8,17 @@
  */
 int print_short_decimal(va_list args, int *count, int flags)
 {
-	short int num = (short int)va_arg(args, int);
-	int digits = 0, temp, c = 0;
+	int num = va_arg(args, int);
+	int digits = 0;
+	int temp;
 
-	if (num < 0)
-	{
-		_putc('-');
-		(*count)++;
-		num = -num;
-	}
-	else if (flags & FLAG_PLUS)
+	if ((flags & FLAG_PLUS) && num >= 0)
 	{
 		_putc('+');
 		(*count)++;
 	}
-	else if (flags & FLAG_SPACE)
+
+	else if ((flags & FLAG_SPACE) && num >= 0)
 	{
 		_putc(' ');
 		(*count)++;
@@ -43,7 +39,6 @@ int print_short_decimal(va_list args, int *count, int flags)
 		_putc('0' + (num / power(10, digits - 1)) % 10);
 		(*count)++;
 		digits--;
-		c++;
 	}
 	return (0);
 }

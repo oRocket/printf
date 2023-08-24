@@ -8,9 +8,9 @@
  */
 int print_long_oct(va_list args, int *count, int flags)
 {
-	long int num = va_arg(args, long int);
+	unsigned long int num = va_arg(args, unsigned long int);
 	char buffer[32];
-	int buffer_index = 0, c = 0;
+	int buffer_index = 0;
 
 	if (num == 0)
 	{
@@ -42,7 +42,6 @@ int print_long_oct(va_list args, int *count, int flags)
 		_putc(buffer[buffer_index]);
 		buffer_index--;
 		(*count)++;
-		c++;
 	}
 	return (0);
 }

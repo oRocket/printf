@@ -1,4 +1,5 @@
 #include "main.h"
+static char hex_digits[] = "0123456789abcdef";
 /**
  * print_short_hex - Prints short int in lowercase hexadecimal representation
  * @args: Points to the list of arguments
@@ -8,9 +9,9 @@
  */
 int print_short_hex(va_list args, int *count, int flags)
 {
-	char buffer[32], hex_digits[] = "0123456789abcdef";
-	int buffer_index = 0, c = 0;
 	unsigned int num = va_arg(args, unsigned int);
+	char buffer[32];
+	int buffer_index = 0;
 
 	if (num == 0)
 	{
@@ -45,7 +46,6 @@ int print_short_hex(va_list args, int *count, int flags)
 		_putc(buffer[buffer_index]);
 		buffer_index--;
 		(*count)++;
-		c++;
 	}
 	return (0);
 }

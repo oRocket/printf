@@ -8,10 +8,9 @@
  */
 int print_short_oct(va_list args, int *count, int flags)
 {
-	short int num = (short int)va_arg(args, int);
+	unsigned int num = va_arg(args, unsigned int);
 	char buffer[32];
 	int buffer_index = 0;
-	int c = 0;
 
 	if (num == 0)
 	{
@@ -42,7 +41,6 @@ int print_short_oct(va_list args, int *count, int flags)
 		_putc(buffer[buffer_index]);
 		buffer_index--;
 		(*count)++;
-		c++;
 	}
 	return (0);
 }
